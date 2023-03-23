@@ -47,7 +47,7 @@ const foodTypes = [{
 {
     id: 3,
     name: "brocolli",
-    foodWeight: -100
+    foodWeight: -90
 }
 
 
@@ -73,7 +73,7 @@ const sleepTypes = [{
 {
     id: 3,
     name: "nighterror",
-    dreamNumber: -100
+    dreamNumber: -90
 }
 
 
@@ -84,22 +84,22 @@ export {sleepTypes}
 const playTypes = [{
     id: 0,
     name: "chess",
-    dreamNumber: 40,
+    playNumber: 40,
 },
 {
     id: 1,
     name: "gameboy",
-    dreamNumber: 100,
+    playNumber: 100,
 },
 {
     id: 2,
     name: "basketball",
-    dreamNumber: -40
+    playNumber: -40
 },
 {
     id: 3,
     name: "marathon",
-    dreamNumber: -100
+    playNumber: -90
 }
 
 

@@ -25,33 +25,32 @@ playRouter.post("/test", (request, response) => {
   console.log("POST PATH: ", request.path);
   console.log("POST QUERY: ", request.query);
   console.log("POST BODY: ", request.body);
-  const newPlayId = request.body.id
-const play = playTypes.filter((id) => id === newPlayId)
-pet.play -= play.playNumber
-console.log(play.playNumber)
-
-
-})
-
+  const newPlayId = request.body.id;
+  const play = playTypes.filter((id) => id === newPlayId);
+  pet.play -= play.playNumber;
+  console.log(play.playNumber);
+});
 
 playRouter.post("/playType", (request, response) => {
   console.log("POST PATH: ", request.path);
   console.log("POST QUERY: ", request.query);
   console.log("POST BODY: ", request.body);
-  const newPlayId = parseInt(request.body.id)
-const play = playTypes.find((id) => id.id === newPlayId) 
-  pet.hunger -= play.playNumber
-  pet.boredom -= play.playNumber
-  pet.fatigue -= play.playNumber
+  const newPlayId = parseInt(request.body.id);
+  console.log(playTypes);
+  const play = playTypes.find((id) => id.id === newPlayId);
+  console.log(play);
+  pet.hunger -= play.playNumber;
+  pet.boredom += play.playNumber;
+  pet.fatigue -= play.playNumber;
   response.send(
-  `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
-    pet.fatigue
-  )} \n Boredom: ${displayMeter(pet.boredom)}`
-);
-
+    `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
+      pet.fatigue
+    )} \n Boredom: ${displayMeter(pet.boredom)}`
+  );
 });
 
 playRouter.post("/", (request, response) => {
-const playReceived = request.body
-playReceived.playName
-})
+  const playReceived = request.body;
+  playReceived.playName;
+});
+
