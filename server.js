@@ -1,19 +1,13 @@
 import express from "express";
-import { feedRouter } from "./feedRouter.js";
-import { playRouter } from "./playRouter.js";
-import { sleepRouter } from "./sleepRouter.js";
-import { petRouter } from "./petRouter.js";
+import { feedRouter } from "./Routers/feedRouter.js";
+import { playRouter } from "./Routers/playRouter.js";
+import { sleepRouter } from "./Routers/sleepRouter.js";
+import { petRouter, pet } from "./Routers/petRouter.js";
 import { displayMeter } from "./data.js";
 
 
 const app = express();
 const port = 5050;
-
-export const pet = {
-  hunger: 0,
-  fatigue: 0,
-  boredom: 0,
-};
 
 app.use(express.json());
 
@@ -30,27 +24,8 @@ app.get("/", (request, response) => {
   );
 });
 
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
-async function run() {
-  while (true) {
-    await sleep(2000);
-    pet.hunger += 10;
-    pet.fatigue += 10;
-    pet.boredom += 10;
-    if (pet.boredom === 100 || pet.fatigue === 100 || pet.hunger === 100) {
-      console.log(
-        `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
-          pet.fatigue
-        )} \n Boredom: ${displayMeter(pet.boredom)}`
-      );
-      console.log("Snowball has died");
-      break;
-    }
-  }
-}
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
 
-run();

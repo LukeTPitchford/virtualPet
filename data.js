@@ -94,12 +94,12 @@ const playTypes = [{
 {
     id: 2,
     name: "basketball",
-    playNumber: -40
+    playNumber: 50
 },
 {
     id: 3,
     name: "marathon",
-    playNumber: -90
+    playNumber: 90
 }
 
 
