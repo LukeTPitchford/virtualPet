@@ -16,7 +16,7 @@ app.use("/play", playRouter);
 app.use("/sleep", sleepRouter);
 app.use("/pet", petRouter);
 
-app.get("/", (request, response) => {
+app.get("/status", (request, response) => {
   response.send(
     `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
       pet.fatigue

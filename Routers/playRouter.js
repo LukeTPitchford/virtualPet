@@ -25,9 +25,9 @@ playRouter.get("/", (request, response) => {
 playRouter.post("/playType", (request, response) => {
   const newPlayId = parseInt(request.body.id);
   const play = playTypes.find((id) => id.id === newPlayId);
-  pet.hunger += play.playNumber;
-  pet.boredom += play.playNumber;
-  pet.fatigue += play.playNumber;
+  pet.hunger -= play.playNumber;
+  pet.boredom -= play.playNumber;
+  pet.fatigue -= play.playNumber;
   response.send(
     `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
       pet.fatigue

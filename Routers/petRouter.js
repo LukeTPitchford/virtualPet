@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
 import { displayMeter } from "../data.js";
 dotenv.config();
 
@@ -20,6 +19,7 @@ const petSchema = new mongoose.Schema({
 const Pet = db.model("pet", petSchema);
 export let pet = new Pet();
 export const petRouter = express.Router();
+
 petRouter.post("/", async (request, response) => {
   pet.name = "Snowball " + pet._id
   pet.hunger = 0;
@@ -28,8 +28,10 @@ petRouter.post("/", async (request, response) => {
 
   await pet.save();
   run();
-  response.send(pet._id);
+  response.send("It's Snowball " + pet._id);
 });
+
+
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
@@ -46,7 +48,6 @@ async function run() {
         )} \n Boredom: ${displayMeter(pet.boredom)}`
       );
       await pet.save()
-      console.log("Snowball has died");
       break;
     }
   }
