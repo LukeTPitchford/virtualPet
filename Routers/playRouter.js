@@ -1,38 +1,26 @@
 import express from "express";
 import { pet } from "./petRouter.js";
-import { displayMeter, playTypes } from "../data.js";
+import { playTypes, stateOfBeing } from "../data.js";
 
 export const playRouter = express.Router();
 
-playRouter.get("/", (request, response) => {
+playRouter.post("/", (request, response) => {
   pet.hunger += 10;
   pet.boredom -= 20;
   pet.fatigue += 10;
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
-    console.log(
-      `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
-        pet.fatigue
-      )} \n Boredom: ${displayMeter(pet.boredom)}`
-    );
   }
-  response.send(
-    `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
-      pet.fatigue
-    )} \n Boredom: ${displayMeter(pet.boredom)}`
-  );
+  response.send(stateOfBeing());
 });
 
 playRouter.post("/playType", (request, response) => {
   const newPlayId = parseInt(request.body.id);
   const play = playTypes.find((id) => id.id === newPlayId);
-  pet.hunger -= play.playNumber;
+  pet.hunger += play.playNumber * .25;
   pet.boredom -= play.playNumber;
-  pet.fatigue -= play.playNumber;
-  response.send(
-    `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
-      pet.fatigue
-    )} \n Boredom: ${displayMeter(pet.boredom)}`
-  );
+  pet.fatigue += play.playNumber * .5;
+
+  response.send(stateOfBeing());
 });
 
 playRouter.post("/", (request, response) => {
