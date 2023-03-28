@@ -16,10 +16,10 @@ sleepRouter.post("/", (request, response) => {
 });
 
 sleepRouter.post("/sleepType", (request, response) => {
-  const newSleepId = parseInt(request.body.id);
+  const newSleepId = sleepTypes[Math.floor(Math.random()*sleepTypes.length)].id;
   const sleep = sleepTypes.find((id) => id.id === newSleepId);
-  pet.hunger += sleep.dreamNumber * 0.5;
-  pet.boredom += sleep.dreamNumber * 0.25;
+  pet.hunger += sleep.dreamNumber * 0.4;
+  pet.boredom += sleep.dreamNumber * 0.2;
   pet.fatigue -= sleep.dreamNumber;
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
   }

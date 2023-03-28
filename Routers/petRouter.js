@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { stateOfBeing } from "../data.js";
 dotenv.config();
 
 const connectionString = process.env.MONGO_URL;
@@ -13,9 +12,11 @@ const petSchema = new mongoose.Schema({
   hunger: Number,
   fatigue: Number,
   boredom: Number,
+  litterBox: Number,
 });
 
 const Pet = db.model("pet", petSchema);
+export const PetModel = mongoose.model("Pet", petSchema);
 export let pet = new Pet();
 export const petRouter = express.Router();
 
@@ -24,6 +25,7 @@ petRouter.post("/", async (request, response) => {
   pet.hunger = 0;
   pet.fatigue = 0;
   pet.boredom = 0;
+  pet.litterBox = 0;
 
   await pet.save();
   run();
@@ -34,19 +36,28 @@ const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 async function run() {
   while (true) {
-    await sleep(2000);
+    await sleep(5000);
     pet.hunger += 10;
     pet.fatigue += 10;
     pet.boredom += 10;
-    if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
-      console.log(stateOfBeing());
+    pet.litterBox += 5;
+    if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100 ||
+      pet.litterBox >= 100) {
       await pet.save();
       break;
     }
   }
 }
 
-// petRouter.delete(":/drinkName", (request, response)=>{
-//   const petToDelete =
-// }
-// })
+petRouter.delete("/:name", async (req, res) => {
+  try {
+    const pet = await PetModel.findOne({ name: req.params.name });
+    if (!pet) {
+      return res.status(404).json({ message: "pet not found" });
+    }
+    await PetModel.deleteOne({ name: req.params.name });
+    return res.status(200).json({ message: "pet has been deleted!" });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+});

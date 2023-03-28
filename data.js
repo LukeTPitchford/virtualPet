@@ -14,6 +14,7 @@ const stat0 = "||                    |";
 
 export function displayMeter(stat) {
   if (stat <= 0) return stat0;
+  if (stat == 0) return stat0;
   if (stat <= 10) return stat10;
   if (stat <= 20) return stat20;
   if (stat <= 30) return stat30;
@@ -24,34 +25,40 @@ export function displayMeter(stat) {
   if (stat <= 80) return stat80;
   if (stat <= 90) return stat90;
   if (stat >= 100) return stat100;
+  if (stat <= 100) return stat100;
 }
 
 export function stateOfBeing() {
-  return `Hunger: ${displayMeter(pet.hunger)} \n Fatigue: ${displayMeter(
-    pet.fatigue
-  )} \n Boredom: ${displayMeter(pet.boredom)}`;
+  return `Hunger: ${displayMeter(pet.hunger)} \n
+          Fatigue: ${displayMeter(pet.fatigue)} \n
+          Boredom: ${displayMeter(pet.boredom)} \n
+          Litterbox: ${displayMeter(pet.litterBox)}`;
 }
 
 const foodTypes = [
   {
     id: 0,
     name: "burger",
-    foodWeight: 40,
+    foodWeight: 60,
+    junk: 40
   },
   {
     id: 1,
     name: "pizza",
-    foodWeight: 30,
+    foodWeight: 80,
+    junk: 30
   },
   {
     id: 2,
     name: "sushi",
-    foodWeight: 40,
+    foodWeight: 20,
+    junk: 10
   },
   {
     id: 3,
     name: "brocolli",
-    foodWeight: -90,
+    foodWeight: 10,
+    junk: 5
   },
 ];
 
@@ -61,22 +68,22 @@ const sleepTypes = [
   {
     id: 0,
     name: "dream",
-    dreamNumber: 40,
+    dreamNumber: 30,
   },
   {
     id: 1,
     name: "great dream",
-    dreamNumber: 100,
+    dreamNumber: 40,
   },
   {
     id: 2,
     name: "nightmare",
-    dreamNumber: -40,
+    dreamNumber: -20,
   },
   {
     id: 3,
     name: "nighterror",
-    dreamNumber: -90,
+    dreamNumber: -30,
   },
 ];
 
@@ -86,22 +93,22 @@ const playTypes = [
   {
     id: 0,
     name: "chess",
-    playNumber: 40,
+    playNumber: 30,
   },
   {
     id: 1,
     name: "gameboy",
-    playNumber: 100,
+    playNumber: 40,
   },
   {
     id: 2,
     name: "basketball",
-    playNumber: -50,
+    playNumber: 40,
   },
   {
     id: 3,
     name: "marathon",
-    playNumber: -90,
+    playNumber: 60,
   },
 ];
 

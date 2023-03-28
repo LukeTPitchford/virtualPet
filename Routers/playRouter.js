@@ -16,9 +16,9 @@ playRouter.post("/", (request, response) => {
 playRouter.post("/playType", (request, response) => {
   const newPlayId = parseInt(request.body.id);
   const play = playTypes.find((id) => id.id === newPlayId);
-  pet.hunger += play.playNumber * .25;
+  pet.hunger += play.playNumber * .2;
   pet.boredom -= play.playNumber;
-  pet.fatigue += play.playNumber * .5;
+  pet.fatigue += play.playNumber * .4;
 
   response.send(stateOfBeing());
 });

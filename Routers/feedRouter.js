@@ -9,6 +9,7 @@ feedRouter.post("/", (request, response) => {
   pet.hunger -= 20;
   pet.boredom += 10;
   pet.fatigue += 10;
+  pet.litterBox += 10;
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
   }
 
@@ -19,8 +20,9 @@ feedRouter.post("/foodWeightAmount", (request, response) => {
   const newFoodId = parseInt(request.body.id);
   const food = foodTypes.find((id) => id.id === newFoodId);
   pet.hunger -= food.foodWeight;
-  pet.boredom += food.foodWeight;
-  pet.fatigue += food.foodWeight;
+  pet.boredom += food.foodWeight * .4;
+  pet.fatigue += food.foodWeight * .2;
+  pet.litterBox += food.health * 1.
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
   }
   response.send(stateOfBeing());
