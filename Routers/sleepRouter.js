@@ -7,12 +7,13 @@ export const sleepRouter = express.Router();
 feedRouter.use(express.json());
 
 sleepRouter.post("/", (request, response) => {
-  pet.hunger += 10;
-  pet.bordom += 10;
-  pet.fatigue -= 20;
+  pet.hunger += 5;
+  pet.boredom += 5;
+  pet.fatigue -= 10;
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
   }
   response.send(stateOfBeing());
+  
 });
 
 sleepRouter.post("/sleepType", (request, response) => {
@@ -24,6 +25,7 @@ sleepRouter.post("/sleepType", (request, response) => {
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
   }
   response.send(stateOfBeing());
+  response.send(sleepTypes.Name);
 });
 
 sleepRouter.post("/", (request, response) => {

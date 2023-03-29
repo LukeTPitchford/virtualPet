@@ -1,3 +1,4 @@
+import e from "express";
 import { pet } from "./Routers/petRouter.js";
 
 const stat100 = "| x x x xDEADx x x x x|";
@@ -28,6 +29,12 @@ export function displayMeter(stat) {
   if (stat <= 100) return stat100;
 }
 
+export function zeroToHundred() {
+  if (Number < 0)Number = 0
+  if (Number > 100)Number = 100
+  return Number
+}
+
 export function stateOfBeing() {
   return `Hunger: ${displayMeter(pet.hunger)} \n
           Fatigue: ${displayMeter(pet.fatigue)} \n
@@ -40,7 +47,7 @@ const foodTypes = [
     id: 0,
     name: "burger",
     foodWeight: 60,
-    junk: 40
+    junk: 20
   },
   {
     id: 1,
@@ -77,13 +84,28 @@ const sleepTypes = [
   },
   {
     id: 2,
-    name: "nightmare",
-    dreamNumber: -20,
+    name: "deep sleep",
+    dreamNumber: 50,
   },
   {
-    id: 3,
+    id: 4,
+    name: "hot night",
+    dreamNumber: 10,
+  },
+  {
+    id: 5,
+    name: "decent sleep",
+    dreamNumber: 20,
+  },
+  {
+    id: 6,
+    name: "nighmare",
+    dreamNumber: -10,
+  },
+  {
+    id: 7,
     name: "nighterror",
-    dreamNumber: -30,
+    dreamNumber: -20,
   },
 ];
 
@@ -93,12 +115,12 @@ const playTypes = [
   {
     id: 0,
     name: "chess",
-    playNumber: 30,
+    playNumber: 20,
   },
   {
     id: 1,
     name: "gameboy",
-    playNumber: 40,
+    playNumber: 30,
   },
   {
     id: 2,
