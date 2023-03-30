@@ -46,13 +46,13 @@ const foodTypes = [
   {
     id: 0,
     name: "burger",
-    foodWeight: 60,
+    foodWeight: 30,
     junk: 20
   },
   {
     id: 1,
     name: "pizza",
-    foodWeight: 80,
+    foodWeight: 40,
     junk: 30
   },
   {
@@ -65,7 +65,7 @@ const foodTypes = [
     id: 3,
     name: "brocolli",
     foodWeight: 10,
-    junk: 5
+    junk: 2.5
   },
 ];
 
@@ -89,7 +89,7 @@ const sleepTypes = [
   },
   {
     id: 4,
-    name: "hot night",
+    name: "toss n turn",
     dreamNumber: 10,
   },
   {
@@ -100,12 +100,7 @@ const sleepTypes = [
   {
     id: 6,
     name: "nighmare",
-    dreamNumber: -10,
-  },
-  {
-    id: 7,
-    name: "nighterror",
-    dreamNumber: -20,
+    dreamNumber: -5,
   },
 ];
 
@@ -130,7 +125,7 @@ const playTypes = [
   {
     id: 3,
     name: "marathon",
-    playNumber: 60,
+    playNumber: 50,
   },
 ];
 

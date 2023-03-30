@@ -37,10 +37,10 @@ const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 async function run() {
   while (true) {
     await sleep(5000);
-    pet.hunger += 10;
-    pet.fatigue += 10;
-    pet.boredom += 10;
-    pet.litterBox += 5;
+    pet.hunger += 5;
+    pet.fatigue += 5;
+    pet.boredom += 5;
+    pet.litterBox += 2.5;
     if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100 ||
       pet.litterBox >= 100) {
       await pet.save();

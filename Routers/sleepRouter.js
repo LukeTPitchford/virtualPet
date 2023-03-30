@@ -25,7 +25,6 @@ sleepRouter.post("/sleepType", (request, response) => {
   if (pet.boredom >= 100 || pet.fatigue >= 100 || pet.hunger >= 100) {
   }
   response.send(stateOfBeing());
-  response.send(sleepTypes.Name);
 });
 
 sleepRouter.post("/", (request, response) => {
